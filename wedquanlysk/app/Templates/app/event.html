@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -112,7 +113,7 @@
         <ul class="event-list" id="eventList">
             <li>
                 <strong>Sự kiện 1</strong>
-                <button class="btn" onclick="editEvent('Sự kiện 1')">Chỉnh sửa</button>
+                <button class="btn" onclick="editEvent('Sự kiện 1')"><a href="{% url 'index' %}" class="btn btn-signup">Chinh Sua</a></button>
             </li>
             <li>
                 <strong>Sự kiện 2</strong>
