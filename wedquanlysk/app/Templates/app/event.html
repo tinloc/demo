@@ -1,75 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Management</title>
+    <title>Chỉnh Sửa Sự Kiện</title>
     <style>
-        <link rel="stylesheet" href="{% static 'app/CSS/event.css' %}">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9800, #e65100);
+            text-align: center;
+            color: white;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+        h1 {
+            color: #d84315;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d84315;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #bf360c;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Event Management System</h1>
-    </header>
     <div class="container">
-        <h2>Add New Event</h2>
-        <form id="eventForm">
+        <h1>Chỉnh Sửa Sự Kiện</h1>
+        <form>
             <div class="form-group">
-                <label for="eventName">Event Name:</label>
-                <input type="text" id="eventName" name="eventName" required>
+                <label for="event-name">Tên sự kiện:</label>
+                <input type="text" id="event-name" name="event-name" required>
             </div>
             <div class="form-group">
-                <label for="eventDate">Event Date:</label>
-                <input type="date" id="eventDate" name="eventDate" required>
+                <label for="event-date">Thời gian:</label>
+                <input type="datetime-local" id="event-date" name="event-date" required>
             </div>
             <div class="form-group">
-                <label for="eventDescription">Event Description:</label>
-                <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
+                <label for="event-location">Địa điểm:</label>
+                <input type="text" id="event-location" name="event-location" required>
             </div>
             <div class="form-group">
-                <button type="submit">Add Event</button>
+                <label for="event-description">Mô tả:</label>
+                <textarea id="event-description" name="event-description" rows="4"></textarea>
             </div>
+            <button type="submit" class="btn">Lưu</button>
+            <a href="index.html" class="btn">Hủy</a>
         </form>
-
-        <h2>Event List</h2>
-        <table id="eventTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Event rows will go here -->
-            </tbody>
-        </table>
     </div>
-
-    <script>
-        const eventForm = document.getElementById('eventForm');
-        const eventTable = document.getElementById('eventTable').querySelector('tbody');
-
-        eventForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const eventName = document.getElementById('eventName').value;
-            const eventDate = document.getElementById('eventDate').value;
-            const eventDescription = document.getElementById('eventDescription').value;
-
-            const newRow = document.createElement('tr');
-
-            newRow.innerHTML = `
-                <td>${eventName}</td>
-                <td>${eventDate}</td>
-                <td>${eventDescription}</td>
-            `;
-
-            eventTable.appendChild(newRow);
-
-            eventForm.reset();
-        });
-    </script>
 </body>
 </html>
