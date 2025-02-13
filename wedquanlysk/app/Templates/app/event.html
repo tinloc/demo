@@ -138,15 +138,11 @@
         function addEvent() {
             var eventName = document.getElementById('newEvent').value;
             if(eventName) {
-                var eventList = document.getElementById('eventList');
-                var newEvent = document.createElement('li');
-                newEvent.innerHTML = `<strong>${eventName}</strong> <button class="btn" onclick="editEvent('${eventName}')">Chỉnh sửa</button>`;
-                eventList.appendChild(newEvent);
-                document.getElementById('newEvent').value = '';
+                window.location.href = 'add_event.html';
             }
         }
         function editEvent(eventName) {
-            alert("Chỉnh sửa: " + eventName);
+            window.location.href = 'edit_event.html?event=' + encodeURIComponent(eventName);
         }
     </script>
 </body>
