@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    
+    transition: transform 0.3s ease;
+}
+
+
+.event-details {
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.event-details h2 {
+    color: #34495e;
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 4px solid #3498db;
+}
+
+.event-details p {
+    line-height: 1.8;
+    color: #555;
+    margin-left: 19px;
+    font-size: 1.1em;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .logo {
+        position: relative;
+        display: block;
+        margin: 0 auto 20px;
+        left: auto;
+        top: auto;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
