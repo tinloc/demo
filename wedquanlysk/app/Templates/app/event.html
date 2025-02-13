@@ -5,56 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chỉnh Sửa Sự Kiện</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff9800, #e65100);
+            background: linear-gradient(to bottom, white 50%, #1e88e5 50%);
             text-align: center;
             color: white;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
         }
         .container {
             max-width: 600px;
             margin: 50px auto;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            color: #333;
+            color: white;
+            transform: scale(0.9);
+            animation: zoomIn 0.5s ease-in-out forwards;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
         }
         h1 {
             color: #d84315;
+            font-weight: 600;
         }
         .form-group {
             margin-bottom: 15px;
             text-align: left;
         }
         label {
-            font-weight: bold;
+            font-weight: 600;
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
-            border-radius: 5px;
+            border-radius: 8px;
             border: 1px solid #ccc;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus {
+            transform: scale(1.05);
+            outline: none;
+            border-color: #d84315;
+            box-shadow: 0 0 10px rgba(216, 67, 21, 0.5);
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 20px;
             background-color: #d84315;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .btn:hover {
             background-color: #bf360c;
+            transform: scale(1.1);
+        }
+        .background-image {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .dragon {
+            position: absolute;
+            width: 200px;
+            top: 20px;
+            right: 20px;
+            animation: fly 5s infinite linear;
+        }
+        @keyframes fly {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-20px) translateY(10px); }
+            100% { transform: translateX(0); }
         }
     </style>
 </head>
 <body>
+    <img src="https://cdn.pixabay.com/photo/2017/01/31/17/44/mountains-2029227_1280.png" class="background-image">
+    <img src="https://cdn.pixabay.com/photo/2013/07/13/12/07/dragon-159367_1280.png" class="dragon">
     <div class="container">
         <h1>Chỉnh Sửa Sự Kiện</h1>
         <form>
