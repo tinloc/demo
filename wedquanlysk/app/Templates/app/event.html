@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh Sửa Sự Kiện</title>
+    <title>Quản Lý Sự Kiện</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         
@@ -11,120 +11,106 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, white 50%, #1e88e5 50%);
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
             text-align: center;
-            color: white;
-            animation: fadeIn 1s ease-in-out;
-            position: relative;
+            color: #fff;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 50px auto;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.15);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            color: white;
-            transform: scale(0.9);
-            animation: zoomIn 0.5s ease-in-out forwards;
-            position: relative;
-            z-index: 2;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.9); }
-            to { transform: scale(1); }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         h1 {
-            color: #d84315;
-            font-weight: 600;
+            color: #ffcc00;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
         }
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
+        .event-list {
+            list-style: none;
+            padding: 0;
         }
-        label {
-            font-weight: 600;
+        .event-list li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus {
+        .event-list li:hover {
             transform: scale(1.05);
-            outline: none;
-            border-color: #d84315;
-            box-shadow: 0 0 10px rgba(216, 67, 21, 0.5);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
         .btn {
             display: inline-block;
-            padding: 12px 20px;
-            background-color: #d84315;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #ffcc00, #ff9900);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 5px;
             font-weight: 600;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
         }
         .btn:hover {
-            background-color: #bf360c;
-            transform: scale(1.1);
+            background: linear-gradient(to right, #ffaa00, #ff7700);
+            transform: scale(1.05);
         }
-        .background-image {
-            position: absolute;
+        input, textarea {
             width: 100%;
-            height: auto;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .dragon {
-            position: absolute;
-            width: 200px;
-            top: 20px;
-            right: 20px;
-            animation: fly 5s infinite linear;
-        }
-        @keyframes fly {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-20px) translateY(10px); }
-            100% { transform: translateX(0); }
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
         }
     </style>
+    <script>
+        function editEvent(eventName) {
+            window.location.href = `edit-event.html?name=${encodeURIComponent(eventName)}`;
+        }
+    </script>
 </head>
 <body>
-    <img src="https://cdn.pixabay.com/photo/2017/01/31/17/44/mountains-2029227_1280.png" class="background-image">
-    <img src="https://cdn.pixabay.com/photo/2013/07/13/12/07/dragon-159367_1280.png" class="dragon">
     <div class="container">
-        <h1>Chỉnh Sửa Sự Kiện</h1>
+        <h1>Quản Lý Sự Kiện</h1>
+        <ul class="event-list">
+            <li>
+                <strong>Sự kiện 1</strong>
+                <button class="btn" onclick="editEvent('Sự kiện 1')">Chỉnh sửa</button>
+            </li>
+            <li>
+                <strong>Sự kiện 2</strong>
+                <button class="btn" onclick="editEvent('Sự kiện 2')">Chỉnh sửa</button>
+            </li>
+            <li>
+                <strong>Sự kiện 3</strong>
+                <button class="btn" onclick="editEvent('Sự kiện 3')">Chỉnh sửa</button>
+            </li>
+        </ul>
+        <h2>Thêm sự kiện mới</h2>
         <form>
-            <div class="form-group">
-                <label for="event-name">Tên sự kiện:</label>
-                <input type="text" id="event-name" name="event-name" required>
-            </div>
-            <div class="form-group">
-                <label for="event-date">Thời gian:</label>
-                <input type="datetime-local" id="event-date" name="event-date" required>
-            </div>
-            <div class="form-group">
-                <label for="event-location">Địa điểm:</label>
-                <input type="text" id="event-location" name="event-location" required>
-            </div>
-            <div class="form-group">
-                <label for="event-description">Mô tả:</label>
-                <textarea id="event-description" name="event-description" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn">Lưu</button>
-            <a href="index.html" class="btn">Hủy</a>
+            <label for="new-event-name">Tên sự kiện:</label>
+            <input type="text" id="new-event-name" required><br><br>
+            
+            <label for="new-event-date">Thời gian:</label>
+            <input type="datetime-local" id="new-event-date" required><br><br>
+            
+            <label for="new-event-location">Địa điểm:</label>
+            <input type="text" id="new-event-location" required><br><br>
+            
+            <label for="new-event-description">Mô tả:</label>
+            <textarea id="new-event-description" rows="4" required></textarea><br><br>
+            
+            <button type="submit" class="btn">Thêm sự kiện</button>
         </form>
     </div>
 </body>
