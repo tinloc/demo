@@ -1,49 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Participant Management</title>
-    <script src="contact.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .form-section,
+      .list-section {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #ff3b2e;
+      }
+      .participant-list {
+        margin-top: 20px;
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
   </head>
   <body>
     <header>
-      <h1>Event Participant Management</h1>
+      <h1>Quản Lý Người Tham Gia Sự Kiện</h1>
     </header>
     <main>
       <section class="form-section">
-        <h2>Add Participant</h2>
+        <h2>Thêm người tham gia</h2>
         <form id="participantForm">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Enter name" required />
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" placeholder="Nhập họ tên" required />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter email" required />
+            <input type="email" id="email" placeholder="Nhập email" required />
           </div>
           <div class="form-group">
-            <label for="phone">Phone Number</label>
+            <label for="phone">Số điện thoại</label>
             <input
               type="tel"
               id="phone"
-              placeholder="Enter phone number"
+              placeholder="Nhập số điện thoại"
               required
             />
           </div>
-          <button type="submit" class="btn">Add</button>
+          <button type="submit" class="btn">Thêm</button>
         </form>
       </section>
 
       <section class="list-section">
-        <h2>Participants</h2>
+        <h2>Danh sách tham gia</h2>
         <div id="participantList" class="participant-list"></div>
       </section>
     </main>
     <footer>
-      <p>&copy; 2025 Event Management System</p>
+      <p>&copy; 2025 Hệ Thống Quản Lý Sự Kiện</p>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
