@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Participant Management</title>
+    <title>Quản lý người tham gia sự kiện</title>
 
     <style>
       body {
@@ -165,11 +165,7 @@
           </div>
           <button type="submit" class="btn">Thêm</button>
         </form>
-      </section>
-
-      <section class="list-section">
-        <h2>Danh sách tham gia</h2>
-        <div id="participantList" class="participant-list"></div>
+        <button class="btn" id="viewListBtn">Xem danh sách tham gia</button>
       </section>
     </main>
     <footer>
@@ -184,13 +180,19 @@
           const email = document.getElementById("email").value;
           const phone = document.getElementById("phone").value;
 
-          const listItem = document.createElement("li");
-          listItem.className = "participant-item";
-          listItem.textContent = `${name} - ${email} - ${phone}`;
-
-          document.getElementById("participantList").appendChild(listItem);
+          const participant = { name, email, phone };
+          const participants =
+            JSON.parse(localStorage.getItem("participants")) || [];
+          participants.push(participant);
+          localStorage.setItem("participants", JSON.stringify(participants));
 
           document.getElementById("participantForm").reset();
+        });
+
+      document
+        .getElementById("viewListBtn")
+        .addEventListener("click", function () {
+          window.location.href = "list.html";
         });
     </script>
   </body>
