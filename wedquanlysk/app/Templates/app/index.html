@@ -12,11 +12,30 @@
         color: #fff;
         margin: 0;
         padding: 0;
+        animation: backgroundFade 10s infinite alternate;
+      }
+      @keyframes backgroundFade {
+        0% {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        100% {
+          background: linear-gradient(135deg, #764ba2, #667eea);
+        }
       }
       header {
         text-align: center;
         padding: 20px;
         background-color: rgba(0, 0, 0, 0.3);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        animation: headerSlide 1s ease-out;
+      }
+      @keyframes headerSlide {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
       }
       main {
         display: flex;
@@ -32,9 +51,19 @@
         border-radius: 10px;
         width: 80%;
         max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+      .form-section:hover,
+      .list-section:hover {
+        transform: scale(1.05);
       }
       .form-group {
         margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
       }
       label {
         display: block;
@@ -46,6 +75,7 @@
         border: none;
         border-radius: 5px;
         margin-top: 5px;
+        transition: background-color 0.3s, box-shadow 0.3s;
       }
       .btn {
         padding: 10px 20px;
@@ -55,19 +85,56 @@
         color: white;
         cursor: pointer;
       }
+      input:focus {
+        background-color: #ddd;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
       .btn:hover {
         background-color: #ff3b2e;
+        transform: translateY(-2px);
       }
       .participant-list {
         margin-top: 20px;
+        list-style-type: none;
+        padding: 0;
       }
+      .participant-item {
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      .participant-item:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
       footer {
         text-align: center;
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.3);
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
         position: fixed;
         width: 100%;
         bottom: 0;
+        animation: footerSlide 1s ease-out;
+      }
+      @keyframes footerSlide {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -108,5 +175,23 @@
     <footer>
       <p>&copy; 2025 Hệ Thống Quản Lý Sự Kiện</p>
     </footer>
+    <script>
+      document
+        .getElementById("participantForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+
+          const listItem = document.createElement("li");
+          listItem.className = "participant-item";
+          listItem.textContent = `${name} - ${email} - ${phone}`;
+
+          document.getElementById("participantList").appendChild(listItem);
+
+          document.getElementById("participantForm").reset();
+        });
+    </script>
   </body>
 </html>
