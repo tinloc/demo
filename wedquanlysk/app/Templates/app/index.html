@@ -105,6 +105,28 @@
       .participant-item:hover {
         background-color: rgba(255, 255, 255, 0.3);
       }
+      .success-message {
+        display: none;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
+        color: white;
+        border-radius: 5px;
+        animation: fadeInOut 5s forwards;
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 1000; 
+        text-align: center;
+        font-size: 1.2em;
+        backdrop-filter: blur(10px); 
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+      }
       footer {
         text-align: center;
         padding: 10px;
@@ -151,7 +173,9 @@
             />
           </div>
           <button type="submit" class="btn">Thêm</button>
-        </form>
+
+          <div id="successMessage" class="success-message">Lưu thành công!</div>
+          
       </section>
 
       <section class="list-section">
@@ -179,6 +203,11 @@
           document.getElementById("participantList").appendChild(listItem);
 
           document.getElementById("participantForm").reset();
+          const successMessage = document.getElementById("successMessage");
+          successMessage.style.display = "block"; 
+          setTimeout(function () {
+            successMessage.style.display = "none"; 
+          }, 3000); 
         });
     </script>
   </body>
