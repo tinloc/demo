@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "",
         "NAME": "wedquanlysk",
-        "USER": "root",
+        "USER": "",
         "PASSWORD": "",
-        "HOST": "localhost",
+        "HOST": "TIN-LOC",
     }
 }
 
