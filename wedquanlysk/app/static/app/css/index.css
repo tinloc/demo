@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Để chứa logo với vị trí tuyệt đối */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Logo ở góc trái trên cùng */
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 100px; /* Điều chỉnh kích thước logo */
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.report-section {
+    margin-bottom: 20px;
+}
+
+.report-section h2 {
+    font-size: 1.2em;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.report-section p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #888;
+}

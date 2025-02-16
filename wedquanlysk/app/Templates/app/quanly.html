@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo sự kiện - Hội thảo khởi nghiệp</title>
+    <link rel="stylesheet" href="{% static 'app/CSS/quanly.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #0044cc;
+            padding: 15px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo img {
+            width: 100px;
+            margin-left: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .header img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .report-section {
+            background: #eef;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ddd;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="https://static.vecteezy.com/ti/gratis-vector/p1/6802420-fu-of-uf-initiele-letter-logo-gratis-vector.jpg" alt="Logo Hội thảo">
+        </div>
+        <div>Hội thảo khởi nghiệp - Báo cáo sự kiện</div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Hội thảo khởi nghiệp</h1>
+            <p>Được tổ chức bởi trường FU</p>
+            <img src="https://vinades.vn/uploads/news/2013/hoi-thao-nukeviet-viethanit.jpg" alt="Banner Hội thảo khởi nghiệp">
+        </div>
+        <div class="report-section"><h2>Số lượng khách</h2><p><span class="highlight">150 người</span> tham dự.</p></div>
+        <div class="report-section"><h2>Ghế ngồi</h2><p><span class="highlight">140 ghế</span> đã sử dụng.</p></div>
+        <div class="report-section"><h2>Doanh thu</h2><p><span class="highlight">20,000,000 VNĐ</span>.</p></div>
+        <div class="report-section"><h2>Chi phí</h2><p><span class="highlight">12,000,000 VNĐ</span>.</p></div>
+        <div class="report-section"><h2>Phát sinh</h2><p><span class="highlight">1,500,000 VNĐ</span>.</p></div>
+        <div class="report-section"><h2>Đánh giá</h2><p>Người tham dự đánh giá: <span class="highlight">4.8/5</span>.</p></div>
+        <div class="footer">Báo cáo được tạo vào ngày 30/12/2024.</div>
+    </div>
+</body>
+</html>

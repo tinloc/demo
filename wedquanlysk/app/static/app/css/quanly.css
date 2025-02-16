@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: #0044cc;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 80px; /* Giảm kích thước logo cho gọn */
+    margin-left: 15px;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+..header {
+    text-align: center; /* Căn giữa nội dung trong phần header */
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+.report-section {
+    background: #eef;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.report-section h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #555;
+}
