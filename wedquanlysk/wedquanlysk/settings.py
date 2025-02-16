@@ -75,13 +75,12 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "d efault": {
-        "ENGINE": "django.db.backends.mysql",
+    "default": {
+        "ENGINE": "",
         "NAME": "wedquanlysk",
-        "USER": "root",
-        "PASSWORD": "0847414469",
-        "HOST": "localhost",
-        "PORT": '3306',
+        "USER": "",
+        "PASSWORD": "",
+        "HOST": "TIN-LOC",
     }
 }
 
