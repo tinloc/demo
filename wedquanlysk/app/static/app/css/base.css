@@ -31,6 +31,13 @@ header .logo img {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Đẩy toàn bộ menu về bên phải */
+nav {
+    flex-grow: 1;  /* Để menu mở rộng phần còn lại của header */
+    display: flex;
+    justify-content: flex-end; /* Đẩy menu sang phải */
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -51,6 +58,16 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+
+.search-icon {
+    display: block; /* Đảm bảo hiển thị */
+    visibility: visible; /* Đảm bảo hiển thị */
+    width: 20px;
+    height: 20px;
+    margin-left: 40px;
+    z-index: 10; /* Đảm bảo không bị che khuất */
+}
+
 
 /* Hero Section */
 #hero {
