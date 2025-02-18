@@ -1,5 +1,12 @@
 {% extends "app/base.html" %}
 {% load static %}
-{% block main-content%}
-welcome my site
-{% endblock main-container%}
+{% block content %}
+<h1>Danh sách sự kiện</h1>
+<ul>
+    {% for event in events %}
+        <li>
+            <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> - {{ event.date }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock content%}

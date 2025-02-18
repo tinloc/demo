@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Participant Management</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        animation: backgroundFade 10s infinite alternate;
+      }
+      @keyframes backgroundFade {
+        0% {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        100% {
+          background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+      }
+      header {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        animation: headerSlide 1s ease-out;
+      }
+      @keyframes headerSlide {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .form-section,
+      .list-section {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+      .form-section:hover,
+      .list-section:hover {
+        transform: scale(1.05);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 5px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+      input:focus {
+        background-color: #ddd;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .btn:hover {
+        background-color: #ff3b2e;
+        transform: translateY(-2px);
+      }
+      .participant-list {
+        margin-top: 20px;
+        list-style-type: none;
+        padding: 0;
+      }
+      .participant-item {
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      .participant-item:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      .success-message {
+        display: none;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
+        color: white;
+        border-radius: 5px;
+        animation: fadeInOut 5s forwards;
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 1000; 
+        text-align: center;
+        font-size: 1.2em;
+        backdrop-filter: blur(10px); 
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      .total-count {
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        animation: footerSlide 1s ease-out;
+      }
+      @keyframes footerSlide {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Người Tham Gia Sự Kiện</h1>
+    </header>
+    <main>
+      <section class="form-section">
+        <h2>Thêm người tham gia</h2>
+        <form id="participantForm">
+          <div class="form-group">
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" placeholder="Nhập họ tên" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Nhập email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Nhập số điện thoại"
+              required
+            />
+          </div>
+          <button type="submit" class="btn">Thêm</button>
+
+          <div id="successMessage" class="success-message">Lưu thành công!</div>
+          
+      </section>
+
+      <section class="list-section">
+        <h2>Danh sách tham gia</h2>
+        <ul id="participantList" class="participant-list"></ul>
+        <div class="total-count" id="totalCount">Tổng số người tham gia: 0</div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Hệ Thống Quản Lý Sự Kiện</p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("participantForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+
+          const listItem = document.createElement("li");
+          listItem.className = "participant-item";
+          listItem.textContent = `${name} - ${email} - ${phone}`;
+
+          document.getElementById("participantList").appendChild(listItem);
+          const totalCount = document.getElementById("totalCount");
+          const participantList = document.getElementById("participantList").children.length;
+          totalCount.textContent = `Tổng số người tham gia: ${participantList}`;
+
+          document.getElementById("participantForm").reset();
+          const successMessage = document.getElementById("successMessage");
+          successMessage.style.display = "block"; 
+          setTimeout(function () {
+            successMessage.style.display = "none"; 
+          }, 2000); 
+        });
+    </script>
+  </body>
+</html>

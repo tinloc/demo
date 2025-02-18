@@ -1,73 +1,89 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+}
+
+.navbar {
+    background: #0044cc;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 80px; /* Giảm kích thước logo cho gọn */
+    margin-left: 15px;
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    background: #fff;
+    width: 80%;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Để chứa logo với vị trí tuyệt đối */
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 30px;
-}
-
-.header p {
-    font-size: 1.1em;
-    color: #666;
-}
-
-/* Logo ở góc trái trên cùng */
-.logo {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 100px; /* Điều chỉnh kích thước logo */
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
+    margin-top: 20px;
 }
 
 h1 {
-    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
     color: #333;
+    margin-bottom: 5px;
 }
 
-.report-section {
+..header {
+    text-align: center; /* Căn giữa nội dung trong phần header */
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #666;
     margin-bottom: 20px;
 }
 
-.report-section h2 {
-    font-size: 1.2em;
-    color: #555;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
+
+.report-section {
+    background: #eef;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
 }
 
-.report-section p {
-    font-size: 1em;
+.report-section h2 {
+    font-size: 16px;
     color: #333;
-    line-height: 1.6;
+    margin-bottom: 5px;
 }
 
 .highlight {
     font-weight: bold;
-    color: #007BFF;
+    color: #d9534f;
 }
 
 .footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #ddd;
     text-align: center;
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #888;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #555;
 }

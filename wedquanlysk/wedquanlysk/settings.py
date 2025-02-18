@@ -76,12 +76,13 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "",
         "NAME": "wedquanlysk",
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "HOST": "TIN-LOC",
+        "PORT": "1433",
+        "OPTIONS": {
+            "driver": "ODBC Driver 17 for SQL Server",
+            "trusted_connection": "yes",}
     }
 }
 
