@@ -1,11 +1,10 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background: linear-gradient(to right, #ff7e5f, #feb47b); 
-    color: #333;
+    background: linear-gradient(135deg, #0a0a0a, #002b5b);
+    color: #222; /* Màu chữ chính */
 }
 
 header {
@@ -13,7 +12,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #222;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
 }
 
@@ -56,7 +55,7 @@ nav ul li a:hover {
 /* Hero Section */
 #hero {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 2rem; /* Giảm padding */
     background: url('hero-image.jpg') no-repeat center center/cover;
     color: #fff;
 }
@@ -64,16 +63,21 @@ nav ul li a:hover {
 #hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #ff4500; /* Màu cam đậm, bạn có thể đổi sang màu khác */
+    /* Gradient Text */
+    background: linear-gradient(to right, #FF5F6D, #FFC371);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+   /* Removed text-shadow */
 }
 
 #hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #333;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    color: #fff; /* Chữ trắng */
+    /* Removed text-shadow */
 }
 
 #hero .cta {
@@ -91,7 +95,7 @@ nav ul li a:hover {
     background-color: #ffaa00;
 }
 
-/* Section Styles */
+/* Section Styles (Forms and Stats) */
 section {
     padding: 2rem;
     margin: 1rem auto;
@@ -121,16 +125,19 @@ form label {
     font-weight: bold;
 }
 
-form input, form select, form button {
+form input,
+form select,
+form button {
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    color: #222; /* Màu chữ trong form */
 }
 
 form button {
-    background-color: #007bff;
+    background-color: #0044cc;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -140,7 +147,6 @@ form button:hover {
     background-color: #0056b3;
 }
 
-/* Statistics Section */
 .stats {
     display: flex;
     justify-content: space-between;
@@ -166,15 +172,18 @@ footer {
     text-align: center;
     padding: 1rem;
     background-color: #222;
-    color: #fff;    
+    color: #fff;
     margin-top: 2rem;
 }
 
-.rounded-image {
-    width: 70px; /* Đặt kích thước ảnh */
+
+/* Removed Sparkle Effect and Body::after */
+
+.rounded-image { /* Style for rounded images */
+    width: 70px;
     height: 70px;
-    border-radius: 50%; /* Bo tròn 100% để thành hình tròn */
-    object-fit: cover; /* Đảm bảo nội dung ảnh không bị méo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ nếu muốn */
-    border: 2px solid #ddd; /* Đường viền nếu cần */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ddd;
 }

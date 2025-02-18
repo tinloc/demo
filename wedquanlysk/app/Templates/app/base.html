@@ -15,37 +15,20 @@
     <header>
       <img src="{% static 'app/images/FU1.jpg' %}" alt="Logo" class="rounded-image">
        <!-- Navbar -->
-    <!-- Tìm kiếm -->
-    <div class="container my-4">
-      <div class="row align-items-center">
-          <div class="col-md-6">
-              <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Tìm kiếm sự kiện bạn muốn?">
-                  <button class="btn btn-primary">Tìm kiếm</button>
-              </div>
-          </div>
-          <div class="col-md-2">
-              <select class="form-select">
-                  <option value="">Chọn khu vực</option>
-                  <option value="hanoi">Hà Nội</option>
-                  <option value="hcm">Hồ Chí Minh</option>
-              </select>
-          </div>
-          <div class="col-md-2">
-              <select class="form-select">
-                  <option value="">Chọn mức giá</option>
-                  <option value="cheap">Rẻ</option>
-                  <option value="medium">Trung bình</option>
-                  <option value="vip">Vip</option>
-              </select>
-          </div>
-      </div>
-  </div>
+       <nav class="nav-menu">
+        <ul>
+          <li><a href="#about-us">ABOUT US</a></li>
+          <li><a href="#speakers">SPEAKERS</a></li>
+          <li><a href="#partners">PARTNERS</a></li>
+          <li><a href="#events">EVENTS</a></li>
+          <li><a href="#tickets" style="color: #f00;">TICKETS</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section id="hero">
-        <h1>Quản Lý Sự Kiện Hiệu Quả</h1>
-        <p>Đăng ký, thi phí, check in nhanh chóng, có kiểm soát</p>
+        <h1 class="gradient-text">Quản Lý Sự Kiện Hiệu Quả </h1>
+        <p>Đăng ký, thu phí, check in nhanh chóng, có kiểm soát</p>
         <a href="{% url "event" %}" class="cta">Bắt Đầu Ngay</a>
     </section>
 
