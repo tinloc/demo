@@ -133,15 +133,40 @@
         font-weight: bold;
       }
       footer {
-        text-align: center;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border-top: 2px solid rgba(255, 255, 255, 0.3);
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        animation: footerSlide 1s ease-out;
+        footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+          background-color: #1a1a1a;
+          color: #fff;
+          font-size: 0.9rem;
       }
+      
+      .footer-left, .footer-center, .footer-right {
+          flex: 1;
+          text-align: center;
+      }
+      
+      .footer-left {
+          text-align: left;
+      }
+      
+      .footer-right {
+          text-align: center;
+      }
+      
+      .footer-right a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 5px;
+      }
+      
+      .footer-right a:hover {
+          text-decoration: underline;
+      }
+      
+    }
       @keyframes footerSlide {
         from {
           transform: translateY(100%);
@@ -190,7 +215,18 @@
       </section>
     </main>
     <footer>
-      <p>&copy; 2025 Hệ Thống Quản Lý Sự Kiện</p>
+      <div class="footer-left">
+        <p>Địa chỉ: 123 Đường Nguyễn Hữu Cảnh, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 0123-456-789</p>
+        <p>Email: contact@eventmanagement.com</p>
+    </div>
+    <div class="footer-info">
+        <p>&copy; 2025 Event Management. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+        <p>Follow us on:</p>
+        <p>Facebook | Twitter | Instagram</p>
+    </div>
     </footer>
 
     <script>
