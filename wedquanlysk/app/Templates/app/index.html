@@ -4,22 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Participant Management</title>
-
+  
     <style>
       body {
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: #fff;
+        background: linear-gradient(135deg, #0a0a0a, #002b5b);
+        color: #fff; /* Chỉnh màu chữ thành màu trắng */
+        line-height: 1.6;
         margin: 0;
         padding: 0;
         animation: backgroundFade 10s infinite alternate;
       }
       @keyframes backgroundFade {
         0% {
-          background: linear-gradient(135deg, #667eea, #764ba2);
+          background: linear-gradient(135deg, #0a0a0a, #002b5b);
         }
         100% {
-          background: linear-gradient(135deg, #764ba2, #667eea);
+          background: linear-gradient(135deg, #0a0a0a, #002b5b);
         }
       }
       header {
@@ -64,6 +65,7 @@
       label {
         display: block;
         margin-bottom: 5px;
+        color: #fff; /* Chỉnh màu chữ thành màu trắng */
       }
       input {
         width: 100%;
@@ -133,40 +135,32 @@
         font-weight: bold;
       }
       footer {
-        footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem 2rem;
-          background-color: #1a1a1a;
-          color: #fff;
-          font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: rgb(5, 0, 0);
+        color: #fff;
+        font-size: 0.9rem;
       }
-      
       .footer-left, .footer-center, .footer-right {
-          flex: 1;
-          text-align: center;
+        flex: 1;
+        text-align: center;
       }
-      
       .footer-left {
-          text-align: left;
+        text-align: left;
       }
-      
       .footer-right {
-          text-align: center;
+        text-align: center;
       }
-      
       .footer-right a {
-          color: #fff;
-          text-decoration: none;
-          margin: 0 5px;
+        color: #fff; /* Chỉnh màu chữ thành màu trắng */
+        text-decoration: none;
+        margin: 0 5px;
       }
-      
       .footer-right a:hover {
-          text-decoration: underline;
+        text-decoration: underline;
       }
-      
-    }
       @keyframes footerSlide {
         from {
           transform: translateY(100%);
@@ -179,7 +173,7 @@
   </head>
   <body>
     <header>
-      <h1>Quản Lý Người Tham Gia Sự Kiện</h1>
+      <h1>Đăng Kí Tham Gia Sự Kiện</h1>
     </header>
     <main>
       <section class="form-section">
