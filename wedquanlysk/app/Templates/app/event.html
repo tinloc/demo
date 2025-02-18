@@ -1,162 +1,166 @@
-{% load static %}
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Sự Kiện</title>
+    <title>Trang Sự Kiện</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #4b6cb7, #182848);
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #0a2a43;
             color: white;
-            position: relative;
-            overflow-x: hidden;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            color: orange;
+        }
+        .search-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            margin-bottom: 30px;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: 2px solid #1a73e8;
+            outline: none;
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+        }
+        .result-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            min-height: 500px;
         }
-        h1 {
+        .result {
+            width: 48%;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+            position: relative;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .result:last-child {
+            border-bottom: none;
+        }
+        .result a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .result p {
+            color: gray;
+            font-size: 14px;
+        }
+        .result:hover {
+            background: #292929;
+            border-radius: 5px;
+        }
+        .result:active {
+            transform: scale(1.05);
+            background: #37474f;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5722;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #333;
             width: 100%;
-            color: #ffcc00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            flex-direction: row;
             text-align: center;
         }
-        .form-group {
-            width: 48%;
+        .footer-left, .footer-right, .footer-info {
+            width: 33%;
+            padding: 10px;
         }
-        label, input, textarea, select {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            opacity: 0.8;
+            animation: twinkle 3s infinite;
         }
-        input, textarea, select {
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            outline: none;
-        }
-        .btn-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .btn {
-            padding: 12px 25px;
-            background: #ffcc00;
-            color: black;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #ffaa00;
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.3; transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Quản Lý Sự Kiện</h1>
-        <div class="form-group">
-            <label for="eventName">Tên sự kiện:</label>
-            <input type="text" id="eventName" placeholder="Nhập tên sự kiện">
+    <h1>Trang Sự Kiện</h1>
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchInput" placeholder="Tìm kiếm sự kiện..." onkeyup="filterEvents()">
+    </div>
+    
+    <div class="result-container" id="eventList">
+        <div class="result" data-keywords="hệ thống quản lý sự kiện hội thảo">
+            <span class="badge">Mới</span>
+            <a href="#">Hệ thống quản lý bán vé cho sự kiện</a>
+            <p>Hỗ trợ tổ chức các buổi seminar chuyên ngành, hội thảo do trường / bộ môn tổ chức.</p>
+            <p>Hỗ trợ đăng ký, thu phí, check-in nhanh chóng và kiểm soát tốt.</p>
+            <p>Giúp đơn vị tổ chức quảng bá, tiếp nhận thông tin đăng ký thay vì dùng Google Form.</p>
+            <p>Tích hợp hệ thống QR code cho khách tham gia.</p>
         </div>
-        <div class="form-group">
-            <label for="eventDate">Ngày diễn ra:</label>
-            <input type="date" id="eventDate">
+        <div class="result" data-keywords="sự kiện kinh tế doanh nghiệp">
+            <span class="badge">Hot</span>
+            <a href="#">Hội thảo Kinh tế & Doanh nghiệp</a>
+            <p>Những phân tích chuyên sâu về thị trường kinh tế hiện nay.</p>
+            <p>Các chuyên gia hàng đầu chia sẻ góc nhìn chiến lược.</p>
         </div>
-        <div class="form-group">
-            <label for="eventTime">Thời gian:</label>
-            <input type="time" id="eventTime">
-        </div>
-        <div class="form-group">
-            <label for="eventLocation">Địa điểm:</label>
-            <input type="text" id="eventLocation" placeholder="Nhập địa điểm">
-        </div>
-        <div class="form-group">
-            <label for="eventCapacity">Số lượng người tham dự:</label>
-            <input type="number" id="eventCapacity" placeholder="Nhập số lượng">
-        </div>
-        <div class="form-group">
-            <label for="eventOrganizer">Người tổ chức:</label>
-            <input type="text" id="eventOrganizer" placeholder="Nhập tên người tổ chức">
-        </div>
-        <div class="form-group">
-            <label for="eventSpeakers">Diễn giả/Khách mời:</label>
-            <input type="text" id="eventSpeakers" placeholder="Nhập tên diễn giả, cách nhau bằng dấu phẩy">
-        </div>
-        <div class="form-group">
-            <label for="eventPrice">Giá vé (VNĐ):</label>
-            <input type="number" id="eventPrice" placeholder="Nhập giá vé">
-        </div>
-        <div class="form-group">
-            <label for="eventPayment">Phương thức thanh toán:</label>
-            <select id="eventPayment">
-                <option value="momo">Momo</option>
-                <option value="bank">Chuyển khoản ngân hàng</option>
-                <option value="cash">Tiền mặt</option>
-                <option value="paypal">PayPal</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="eventLink">Liên kết sự kiện:</label>
-            <input type="url" id="eventLink" placeholder="Nhập URL sự kiện">
-        </div>
-        <div class="form-group">
-            <label for="eventDescription">Mô tả:</label>
-            <textarea id="eventDescription" placeholder="Nhập mô tả sự kiện"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="eventType">Loại sự kiện:</label>
-            <select id="eventType">
-                <option value="hội thảo">Hội thảo</option>
-                <option value="hội nghị">Hội nghị</option>
-                <option value="buổi biểu diễn">Buổi biểu diễn</option>
-                <option value="khác">Khác</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="eventImage">Hình ảnh sự kiện:</label>
-            <input type="file" id="eventImage">
-        </div>
-        <div class="form-group">
-            <label for="eventMap">Bản đồ sự kiện:</label>
-            <input type="url" id="eventMap" placeholder="Nhập liên kết Google Maps">
-        </div>
-        <div class="btn-container">
-            <button class="btn" onclick="saveEvent()">Lưu</button>
-            <button class="btn" onclick="goBack()">Quay lại</button>
+        <div class="result" data-keywords="công nghệ AI xu hướng">
+            <span class="badge">Xu hướng</span>
+            <a href="#">Sự kiện về Công nghệ AI</a>
+            <p>Những ứng dụng mới nhất của trí tuệ nhân tạo trong đời sống.</p>
+            <p>Giao lưu với các chuyên gia hàng đầu trong ngành.</p>
         </div>
     </div>
-    <script>
-        function saveEvent() {
-            alert("Sự kiện đã được lưu thành công!");
-        }
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <footer>
+        <div class="footer-left">
+            <p>&copy; 2025 Event Management. All rights reserved.</p>
+        </div>
+        <div class="footer-info">
+            <p>Địa chỉ: 123 Đường Nguyễn Hữu Cảnh, Quận 1, TP.HCM</p>
+            <p>Điện thoại: 0123-456-789</p>
+            <p>Email: contact@eventmanagement.com</p>
+        </div>
+        <div class="footer-right">
+            <p>Follow us on:</p>
+            <p>Facebook | Twitter | Instagram</p>
+        </div>
+    </footer>
 </body>
 </html>
-    
