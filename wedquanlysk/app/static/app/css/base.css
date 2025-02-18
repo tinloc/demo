@@ -7,6 +7,33 @@ body {
     color: #222; /* Màu chữ chính */
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background toàn trang */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Overlay để làm mờ background */
+.background::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Hiệu ứng mờ */
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -64,16 +91,22 @@ nav ul li a:hover {
     visibility: visible; /* Đảm bảo hiển thị */
     width: 20px;
     height: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
     z-index: 10; /* Đảm bảo không bị che khuất */
 }
 
+/* Nội dung chính (phần giữa) */
+.main-content {
+    flex: 1;  /* Đẩy footer xuống cuối */
+    text-align: center;
+    padding: 50px;
+}
 
 /* Hero Section */
 #hero {
     text-align: center;
     padding: 2rem; /* Giảm padding */
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    background: url('event.jpg') no-repeat center center/cover;
     color: #fff;
 }
 
@@ -193,6 +226,10 @@ footer {
     background-color: #1a1a1a;
     color: #fff;
     font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 15px;
+    width: 100%;
 }
 
 .footer-left, .footer-center, .footer-right {
@@ -230,3 +267,4 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border: 2px solid #ddd;
 }
+
