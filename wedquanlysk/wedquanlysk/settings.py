@@ -76,10 +76,9 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "",
+        "ENGINE": "mssql",
         "NAME": "wedquanlysk",
         "HOST": "TIN-LOC",
-        "PORT": "1433",
         "OPTIONS": {
             "driver": "ODBC Driver 17 for SQL Server",
             "trusted_connection": "yes",}
