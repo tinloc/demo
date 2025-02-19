@@ -80,7 +80,7 @@ DATABASES = {
         "NAME": "wedquanlysk",
         "USER": "",
         "PASSWORD": "",
-        "HOST": "TIN-LOC",
+        "HOST": "LAPTOP-9NUDOLLL",
     }
 }
 
