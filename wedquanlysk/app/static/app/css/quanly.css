@@ -1,89 +1,91 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* Reset mặc định */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar {
-    background: #0044cc;
-    padding: 15px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d1b2a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(to right, #1b263b, #415a77);
     color: white;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
+    padding: 50px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.logo img {
-    width: 80px; /* Giảm kích thước logo cho gọn */
-    margin-left: 15px;
+header h1 {
+    font-size: 3em;
+}
+
+header p {
+    font-size: 1.2em;
 }
 
 .container {
-    width: 80%;
-    margin: 20px auto;
     padding: 20px;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.header {
-    text-align: center;
-    margin-top: 20px;
+.section {
+    background-color: #1b263b;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
 }
 
-h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-..header {
-    text-align: center; /* Căn giữa nội dung trong phần header */
-}
-
-.header h1 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.header p {
-    font-size: 16px;
-    color: #666;
+.section h2, .section h3 {
+    color: #70a1ff;
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
-
-.report-section {
-    background: #eef;
-    padding: 10px;
-    margin: 10px 0;
+.artist {
+    display: flex;
+    align-items: center;
+    background: #415a77;
+    padding: 20px;
     border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
 }
 
-.report-section h2 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 5px;
+.artist:hover {
+    transform: translateY(-5px);
 }
 
-.highlight {
-    font-weight: bold;
-    color: #d9534f;
+.artist img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
 }
 
-.footer {
-    margin-top: 20px;
-    padding: 10px;
-    background: #ddd;
+.artist-info h4 {
+    color: #a5d8ff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.artist-info p {
+    color: #dbe4ee;
+    font-size: 1.1em;
+}
+
+footer {
     text-align: center;
-    border-radius: 5px;
-    font-size: 13px;
-    color: #555;
+    background-color: #1b263b;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 1.1em;
 }
