@@ -102,6 +102,7 @@ nav ul li a:hover {
     padding: 50px;
 }
 
+
 /* Hero Section */
 #hero {
     text-align: center;
@@ -147,7 +148,7 @@ nav ul li a:hover {
 
 /* Section Styles (Forms and Stats) */
 section {
-    padding: 2rem;
+    padding: 0rem;
     margin: 1rem auto;
     max-width: 800px;
     background: #fff;
@@ -228,7 +229,7 @@ footer {
     font-size: 0.9rem;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
-    padding: 15px;
+    padding: 5px;
     width: 100%;
 }
 
@@ -268,3 +269,38 @@ footer {
     border: 2px solid #ddd;
 }
 
+.event-banner {
+    background-image: url('background.jpg'); /* Đổi ảnh nền theo nhu cầu */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Giữ cố định */
+    text-align: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-date {
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(255, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.view-more {
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.view-more:hover {
+    background: darkred;
+}
