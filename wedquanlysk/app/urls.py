@@ -5,5 +5,5 @@ from.import views
 urlpatterns = [
     path('', views.home),
     path('event/', views.event, name='event'),
-    path('event/index', views.index, name='index'),
+    path('index/', views.index, name='index'),
 ]
