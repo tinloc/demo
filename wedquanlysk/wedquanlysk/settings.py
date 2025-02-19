@@ -76,11 +76,12 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "",
+        "ENGINE": "mssql",
         "NAME": "wedquanlysk",
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "LAPTOP-9NUDOLLL",
+        "HOST": "TIN-LOC",
+        "OPTIONS": {
+            "driver": "ODBC Driver 17 for SQL Server",
+            "trusted_connection": "yes",}
     }
 }
 

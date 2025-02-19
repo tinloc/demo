@@ -1,120 +1,91 @@
-{% load static %}
+{% load static %} 
+<!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh Sửa Sự Kiện</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #1E3A8A, #0F172A);
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-        h1 {
-            color: yellow;
-        }
-        label, input, textarea, select {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-        }
-        input, textarea, select {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #ffcc00;
-            color: black;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: #ffaa00;
-        }
-        .floating-star {
-            position: absolute;
-            color: yellow;
-            font-size: 15px;
-            animation: floatStar 3s infinite ease-in-out;
-        }
-        @keyframes floatStar {
-            0% { transform: translateY(0); opacity: 0.8; }
-            50% { transform: translateY(-15px); opacity: 1; }
-            100% { transform: translateY(0); opacity: 0.8; }
-        }
-        .star1 { top: 10%; left: 10%; }
-        .star2 { top: 20%; right: 15%; }
-        .star3 { bottom: 15%; left: 30%; }
-        .star4 { bottom: 10%; right: 20%; }
-        .star5 { top: 30%; left: 50%; }
-        .star6 { bottom: 40%; right: 10%; }
-        .star7 { top: 5%; right: 5%; }
-        .star8 { bottom: 5%; left: 5%; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Chỉnh Sửa Sự Kiện</h1>
-        <label for="eventName">Tên sự kiện:</label>
-        <input type="text" id="eventName" placeholder="Nhập tên sự kiện">
-        
-        <label for="eventDate">Ngày diễn ra:</label>
-        <input type="date" id="eventDate">
-        
-        <label for="eventTime">Thời gian:</label>
-        <input type="time" id="eventTime">
-        
-        <label for="eventLocation">Địa điểm:</label>
-        <input type="text" id="eventLocation" placeholder="Nhập địa điểm">
-        
-        <label for="eventDescription">Mô tả:</label>
-        <textarea id="eventDescription" placeholder="Nhập mô tả sự kiện"></textarea>
-        
-        <label for="eventType">Loại sự kiện:</label>
-        <select id="eventType">
-            <option value="hội thảo">Hội thảo</option>
-            <option value="hội nghị">Hội nghị</option>
-            <option value="buổi biểu diễn">Buổi biểu diễn</option>
-            <option value="khác">Khác</option>
-        </select>
-        
-        <button class="btn" onclick="saveEvent()">Lưu</button>
-        <button class="btn" onclick="goBack()">Quay lại</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Participant Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/CSS/index.css' %}">
+  </head>
+
+  <body>
+    <header>
+      <h1>Đăng Kí Tham Gia Sự Kiện</h1>
+    </header>
+    <main>
+      <section class="form-section">
+        <h2>Thêm người tham gia</h2>
+        <form id="participantForm">
+          <div class="form-group">
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" placeholder="Nhập họ tên" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Nhập email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Nhập số điện thoại"
+              required
+            />
+          </div>
+          <button type="submit" class="btn">Thêm</button>
+
+          <div id="successMessage" class="success-message">Lưu thành công!</div>
+          
+      </section>
+
+      <section class="list-section">
+        <h2>Danh sách tham gia</h2>
+        <ul id="participantList" class="participant-list"></ul>
+        <div class="total-count" id="totalCount">Tổng số người tham gia: 0</div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-left">
+        <p>Địa chỉ: 123 Đường Nguyễn Hữu Cảnh, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 0123-456-789</p>
+        <p>Email: contact@eventmanagement.com</p>
     </div>
-    <div class="floating-star star1">⭐</div>
-    <div class="floating-star star2">⭐</div>
-    <div class="floating-star star3">⭐</div>
-    <div class="floating-star star4">⭐</div>
-    <div class="floating-star star5">⭐</div>
-    <div class="floating-star star6">⭐</div>
-    <div class="floating-star star7">⭐</div>
-    <div class="floating-star star8">⭐</div>
+    <div class="footer-info">
+        <p>&copy; 2025 Event Management. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+        <p>Follow us on:</p>
+        <p>Facebook | Twitter | Instagram</p>
+    </div>
+    </footer>
+
     <script>
-        function saveEvent() {
-            alert("Sự kiện đã được lưu thành công!");
-        }
-        function goBack() {
-            window.location.href = 'index.html';
-        }
+      document
+        .getElementById("participantForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+
+          const listItem = document.createElement("li");
+          listItem.className = "participant-item";
+          listItem.textContent = `${name} - ${email} - ${phone}`;
+
+          document.getElementById("participantList").appendChild(listItem);
+          const totalCount = document.getElementById("totalCount");
+          const participantList = document.getElementById("participantList").children.length;
+          totalCount.textContent = `Tổng số người tham gia: ${participantList}`;
+
+          document.getElementById("participantForm").reset();
+          const successMessage = document.getElementById("successMessage");
+          successMessage.style.display = "block"; 
+          setTimeout(function () {
+            successMessage.style.display = "none"; 
+          }, 2000); 
+        });
     </script>
-</body>
+  </body>
 </html>

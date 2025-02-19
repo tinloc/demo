@@ -1,11 +1,37 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #e3f2fd;
-    color: #333;
+    background: linear-gradient(135deg, #0a0a0a, #002b5b);
+    color: #222; /* Màu chữ chính */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background toàn trang */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Overlay để làm mờ background */
+.background::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Hiệu ứng mờ */
 }
 
 header {
@@ -13,7 +39,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #222;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
 }
 
@@ -30,6 +56,13 @@ header .logo img {
     margin-right: 10px;
     border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Đẩy toàn bộ menu về bên phải */
+nav {
+    flex-grow: 1;  /* Để menu mở rộng phần còn lại của header */
+    display: flex;
+    justify-content: flex-end; /* Đẩy menu sang phải */
 }
 
 nav ul {
@@ -53,27 +86,48 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+.search-icon {
+    display: block; /* Đảm bảo hiển thị */
+    visibility: visible; /* Đảm bảo hiển thị */
+    width: 20px;
+    height: 20px;
+    margin-left: 100px;
+    z-index: 10; /* Đảm bảo không bị che khuất */
+}
+
+/* Nội dung chính (phần giữa) */
+.main-content {
+    flex: 1;  /* Đẩy footer xuống cuối */
+    text-align: center;
+    padding: 50px;
+}
+
 /* Hero Section */
 #hero {
     text-align: center;
-    padding: 4rem 2rem;
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    padding: 2rem; /* Giảm padding */
+    background: url('event.jpg') no-repeat center center/cover;
     color: #fff;
 }
 
 #hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #ff4500; /* Màu cam đậm, bạn có thể đổi sang màu khác */
+    /* Gradient Text */
+    background: linear-gradient(to right, #FF5F6D, #FFC371);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+   /* Removed text-shadow */
 }
 
 #hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #333;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    color: #fff; /* Chữ trắng */
+    /* Removed text-shadow */
 }
 
 #hero .cta {
@@ -91,7 +145,7 @@ nav ul li a:hover {
     background-color: #ffaa00;
 }
 
-/* Section Styles */
+/* Section Styles (Forms and Stats) */
 section {
     padding: 2rem;
     margin: 1rem auto;
@@ -121,16 +175,19 @@ form label {
     font-weight: bold;
 }
 
-form input, form select, form button {
+form input,
+form select,
+form button {
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    color: #222; /* Màu chữ trong form */
 }
 
 form button {
-    background-color: #007bff;
+    background-color: #0044cc;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -140,7 +197,6 @@ form button:hover {
     background-color: #0056b3;
 }
 
-/* Statistics Section */
 .stats {
     display: flex;
     justify-content: space-between;
@@ -163,18 +219,52 @@ form button:hover {
 
 /* Footer */
 footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.7);
     text-align: center;
-    padding: 1rem;
-    background-color: #222;
-    color: #fff;    
-    margin-top: 2rem;
+    padding: 15px;
+    width: 100%;
 }
 
-.rounded-image {
-    width: 70px; /* Đặt kích thước ảnh */
-    height: 70px;
-    border-radius: 50%; /* Bo tròn 100% để thành hình tròn */
-    object-fit: cover; /* Đảm bảo nội dung ảnh không bị méo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ nếu muốn */
-    border: 2px solid #ddd; /* Đường viền nếu cần */
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    text-align: center;
 }
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: center;
+}
+
+.footer-right a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Removed Sparkle Effect and Body::after */
+
+.rounded-image { /* Style for rounded images */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ddd;
+}
+
