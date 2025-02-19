@@ -7,6 +7,33 @@ body {
     color: #222; /* Màu chữ chính */
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background toàn trang */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Overlay để làm mờ background */
+.background::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Hiệu ứng mờ */
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -64,8 +91,15 @@ nav ul li a:hover {
     visibility: visible; /* Đảm bảo hiển thị */
     width: 20px;
     height: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
     z-index: 10; /* Đảm bảo không bị che khuất */
+}
+
+/* Nội dung chính (phần giữa) */
+.main-content {
+    flex: 1;  /* Đẩy footer xuống cuối */
+    text-align: center;
+    padding: 50px;
 }
 
 
@@ -73,7 +107,7 @@ nav ul li a:hover {
 #hero {
     text-align: center;
     padding: 2rem; /* Giảm padding */
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    background: url('event.jpg') no-repeat center center/cover;
     color: #fff;
 }
 
@@ -114,7 +148,7 @@ nav ul li a:hover {
 
 /* Section Styles (Forms and Stats) */
 section {
-    padding: 2rem;
+    padding: 0rem;
     margin: 1rem auto;
     max-width: 800px;
     background: #fff;
@@ -186,12 +220,42 @@ form button:hover {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
     color: #fff;
-    margin-top: 2rem;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 5px;
+    width: 100%;
 }
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: center;
+}
+
+.footer-right a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
 
 
 /* Removed Sparkle Effect and Body::after */
@@ -203,4 +267,40 @@ footer {
     object-fit: cover;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border: 2px solid #ddd;
+}
+
+.event-banner {
+    background-image: url('background.jpg'); /* Đổi ảnh nền theo nhu cầu */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Giữ cố định */
+    text-align: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-date {
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(255, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.view-more {
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.view-more:hover {
+    background: darkred;
 }
