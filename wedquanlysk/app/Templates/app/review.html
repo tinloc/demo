@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đánh giá của khách hàng</title>
     <style>
-      /* styles.css */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -14,6 +14,12 @@ body {
     text-align: center;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 /* Navigation Bar */
 header {
     display: flex;
@@ -124,7 +130,44 @@ footer {
     padding: 20px;
     margin-top: 50px;
 }
-
+/* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 5px;
+            width: 100%;
+        }
+        
+        .footer-left, .footer-center, .footer-right {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .footer-left {
+            text-align: left;
+        }
+        
+        .footer-right {
+            text-align: center;
+        }
+        
+        .footer-right a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .footer-right a:hover {
+            text-decoration: underline;
+        }
+        
 .contact-info p, .social-links p {
     margin: 5px 0;
 }
@@ -164,21 +207,34 @@ footer {
         
             <label for="message">Ý kiến đánh giá</label>
             <textarea id="message" class="input-box message-box" placeholder="Nhập ý kiến đánh giá. . ."></textarea>
-            <button type="submit" class="submit-btn">Gửi</button>
+            <a href="{% url 'survey' %}">Gửi </a>
         </form>
               
     </section>
 
     <footer>
-        <div class="contact-info">
+        <div class="footer-left">
             <p>Địa chỉ: 123 Đường Nguyễn Hữu Cảnh, Quận 1, TP.HCM</p>
             <p>Điện thoại: 0123-456-789</p>
             <p>Email: contact@eventmanagement.com</p>
         </div>
-        <p>© 2025 Event Management. All rights reserved.</p>
-        <div class="social-links">
+        <div class="footer-info">
+            <p>&copy; 2025 Event Management. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
             <p>Follow us on:</p>
-            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    
         </div>
     </footer>
 </body>

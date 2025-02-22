@@ -1,28 +1,26 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Management System</title>
-
-     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'app/CSS/base.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0a2a43;
-            color: white;
-            padding: 20px;
-            text-align: center;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0a0a0a, #002b5b);
+            color: #ddd; /* Sửa màu chữ để dễ đọc hơn */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        h1 {
-            color: orange;
-        }
+        h1 { color: orange; text-align: center; }
         .back-button, .continue-button {
-            position: absolute;
+            position: fixed;
             top: 10px;
             background: #ff5722;
             color: white;
@@ -31,18 +29,11 @@
             font-size: 16px;
             text-decoration: none;
             font-weight: bold;
+            z-index: 1000;
         }
-        .back-button {
-            left: 10px;
-        }
-        .continue-button {
-            right: 10px;
-        }
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
+        .back-button { left: 10px; }
+        .continue-button { right: 10px; }
+        .search-container { display: flex; justify-content: center; margin-bottom: 30px; }
         .search-box {
             width: 100%;
             max-width: 600px;
@@ -50,10 +41,10 @@
             font-size: 18px;
             border-radius: 25px;
             border: 2px solid #1a73e8;
-            outline: none;
             background-color: #1e1e1e;
             color: white;
             text-align: center;
+            outline: none;
         }
         .result-container {
             display: flex;
@@ -67,51 +58,62 @@
             box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
             min-height: 500px;
         }
-        .result {
-            width: 48%;
-            padding: 15px;
-            border-bottom: 1px solid #333;
-            text-align: left;
-            position: relative;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .result:last-child {
-            border-bottom: none;
-        }
-        .result a {
-            color: #1a73e8;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .result p {
-            color: gray;
-            font-size: 14px;
-        }
-        .result:hover {
-            background: #292929;
-            border-radius: 5px;
-        }
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff5722;
+        .result { width: 48%; padding: 15px; border-bottom: 1px solid #333; transition: 0.3s; }
+        .result:last-child { border-bottom: none; }
+        .result a { color: #1a73e8; text-decoration: none; font-size: 20px; font-weight: bold; }
+        .result:hover { background: #292929; border-radius: 5px; }
+        .badge { position: absolute; top: 10px; right: 10px; background: #ff5722; color: white; padding: 5px 10px; border-radius: 15px; font-size: 12px; }
+        @media (max-width: 768px) { .result { width: 100%; } }
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
+            text-align: center;
         }
-        @media (max-width: 768px) {
-            .result {
-                width: 100%;
-            }
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 5px;
+            width: 100%;
         }
+        
+        .footer-left, .footer-center, .footer-right {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .footer-left {
+            text-align: left;
+        }
+        
+        .footer-right {
+            text-align: center;
+        }
+        
+        .footer-right a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .footer-right a:hover {
+            text-decoration: underline;
+        }
+        
+        
     </style>
 </head>
 <body>
-    <a href="#" class="back-button">&#8592; Quay lại</a>
+    <a href="{% url "home" %}" class="back-button">&#8592; Quay lại</a>
     <a href="#" class="continue-button">Tiếp tục &#8594;</a>
     <h1>Trang Sự Kiện</h1>
     <div class="search-container">
@@ -121,18 +123,13 @@
     <div class="result-container" id="eventList">
         <div class="result" data-keywords="quản lý sự kiện hội thảo">
             <span class="badge">Mới</span>
-            <a href="#">Hệ thống quản lý bán vé</a>
-            <p>Hỗ trợ tổ chức hội thảo, seminar.</p>
+            <a href="{% url "event_manager" %}">Lễ tốt nghiệp trường FU</a>
+            <p>Ngày hôm nay là ngày đặc biệt trong hành trình học tập của các sinh viên trường FU.</p>
         </div>
         <div class="result" data-keywords="kinh tế doanh nghiệp">
             <span class="badge">Hot</span>
-            <a href="#">Hội thảo Kinh tế & Doanh nghiệp</a>
+            <a href="{% url "sukien" %}">Hội thảo Kinh tế & Doanh nghiệp</a>
             <p>Phân tích chuyên sâu về thị trường.</p>
-        </div>
-        <div class="result" data-keywords="công nghệ AI xu hướng">
-            <span class="badge">Xu hướng</span>
-            <a href="#">Sự kiện về Công nghệ AI</a>
-            <p>Ứng dụng AI trong đời sống.</p>
         </div>
     </div>
 
@@ -168,11 +165,7 @@
             let events = document.querySelectorAll('.result');
             events.forEach(event => {
                 let keywords = event.getAttribute('data-keywords');
-                if (keywords.includes(input)) {
-                    event.style.display = 'block';
-                } else {
-                    event.style.display = 'none';
-                }
+                event.style.display = keywords.includes(input) ? 'block' : 'none';
             });
         }
     </script>

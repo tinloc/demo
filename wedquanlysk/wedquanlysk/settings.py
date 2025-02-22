@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'wedquanlysk.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "mssql",
-        "NAME": "wedquanlysk",
+        "NAME": "Event1",
         "HOST": "TIN-LOC",
         "OPTIONS": {
             "driver": "ODBC Driver 17 for SQL Server",

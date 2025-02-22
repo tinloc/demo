@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Khảo Sát</title>
+    <link rel="stylesheet" href="survey-result.css">
+</head>
+<body>
+<style>
+    /* Định dạng chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #facc15, #ff8800);
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container chính giữa màn hình */
+.container {
+    max-width: 600px;
+    background: white;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề cảm ơn */
+h1 {
+    color: #d97706;
+    font-size: 2em;
+}
+
+/* Đoạn mô tả ngắn */
+p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Nút quay lại trang chủ */
+.back-home {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background: #d97706;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.back-home:hover {
+    background: #b45309;
+}
+</style>
+<div class="container">
+    <h1>Cảm ơn bạn đã đóng góp ý kiến!</h1>
+    <p>Chúng tôi rất trân trọng sự đóng góp của bạn. Những ý kiến của bạn sẽ giúp chúng tôi cải thiện dịch vụ tốt hơn trong tương lai.</p>
+    <<a href="{% url "home" %}" class="back-home">Quay lại Trang Chủ</a>
+</div>
+
+</body>
+</html>

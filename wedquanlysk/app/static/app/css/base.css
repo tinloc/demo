@@ -254,7 +254,7 @@ footer {
 
 .footer-right a:hover {
     text-decoration: underline;
-}
+}   
 
 
 
@@ -270,10 +270,9 @@ footer {
 }
 
 .event-banner {
-    background-image: url('background.jpg'); /* Đổi ảnh nền theo nhu cầu */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Giữ cố định */
+    background-attachment: fixed; 
     text-align: center;
     color: white;
     height: 100vh;

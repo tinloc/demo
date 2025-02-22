@@ -1,438 +1,164 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Participant Management</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách người đăng ký</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0a0a0a, #002b5b);
-        color: #fff; /* Chỉnh màu chữ thành màu trắng */
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        animation: backgroundFade 10s infinite alternate;
-      }
-      @keyframes backgroundFade {
-        0% {
-          background: linear-gradient(135deg, #0a0a0a, #002b5b);
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        100% {
-          background: linear-gradient(135deg, #0a0a0a, #002b5b);
+
+        body {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
         }
-      }
-      header {
-        text-align: center;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        animation: headerSlide 1s ease-out;
-      }
-      @keyframes headerSlide {
-        from {
-          transform: translateY(-100%);
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
         }
-        to {
-          transform: translateY(0);
+
+        /* Thông báo */
+        .messages {
+            list-style: none;
+            padding: 10px;
+            margin: 10px auto;
+            width: 50%;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
         }
-      }
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-      }
-      .form-section,
-      .list-section {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        margin: 10px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 600px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s;
-      }
-      .form-section:hover,
-      .list-section:hover {
-        transform: scale(1.05);
-      }
-      .form-group {
-        margin-bottom: 15px;
-      }
-      label {
-        display: block;
-        margin-bottom: 5px;
-        color: #fff; /* Chỉnh màu chữ thành màu trắng */
-      }
-      input {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        margin-top: 5px;
-        transition: background-color 0.3s, box-shadow 0.3s;
-      }
-      input:focus {
-        background-color: #ddd;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      }
-      .btn {
-        padding: 10px 20px;
-        background-color: #ff6f61;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s;
-      }
-      .btn:hover {
-        background-color: #ff3b2e;
-        transform: translateY(-2px);
-      }
-      .participant-list {
-        margin-top: 20px;
-        list-style-type: none;
-        padding: 0;
-      }
-      .participant-item {
-        background-color: rgba(255, 255, 255, 0.2);
-        margin: 5px 0;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      .participant-item:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-      .success-message {
-        display: none;
-        padding: 10px 20px;
-        background-color: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
-        color: white;
-        border-radius: 5px;
-        animation: fadeInOut 5s forwards;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        text-align: center;
-        font-size: 1.2em;
-        backdrop-filter: blur(10px);
-      }
-      @keyframes fadeInOut {
-        0% {
-          opacity: 0;
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
-        10% {
-          opacity: 1;
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
-        90% {
-          opacity: 1;
+
+        /* Form đăng ký */
+        form {
+            background: white;
+            padding: 20px;
+            width: 50%;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
-        100% {
-          opacity: 0;
+
+        label {
+            display: block;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 5px;
         }
-      }
-      .total-count {
-        margin-top: 20px;
-        font-size: 1.2em;
-        font-weight: bold;
-      }
-      footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background-color: rgb(5, 0, 0);
-        color: #fff;
-        font-size: 0.9rem;
-      }
-      .footer-left,
-      .footer-center,
-      .footer-right {
-        flex: 1;
-        text-align: center;
-      }
-      .footer-left {
-        text-align: left;
-      }
-      .footer-right {
-        text-align: center;
-      }
-      .footer-right a {
-        color: #fff; /* Chỉnh màu chữ thành màu trắng */
-        text-decoration: none;
-        margin: 0 5px;
-      }
-      .footer-right a:hover {
-        text-decoration: underline;
-      }
-      @keyframes footerSlide {
-        from {
-          transform: translateY(100%);
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        to {
-          transform: translateY(0);
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
         }
-      }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Bảng danh sách */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
     </style>
+</head>
+<body>
 
-  </head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #002b5b);
-      color: #fff; /* Chỉnh màu chữ thành màu trắng */
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      animation: backgroundFade 10s infinite alternate;
-    }
-    @keyframes backgroundFade {
-      0% {
-        background: linear-gradient(135deg, #0a0a0a, #002b5b);
-      }
-      100% {
-        background: linear-gradient(135deg, #0a0a0a, #002b5b);
-      }
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.3);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      animation: headerSlide 1s ease-out;
-    }
-    @keyframes headerSlide {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    .form-section,
-    .list-section {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      margin: 10px;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
-    }
-    .form-section:hover,
-    .list-section:hover {
-      transform: scale(1.05);
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: #fff; /* Chỉnh màu chữ thành màu trắng */
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 5px;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-    input:focus {
-      background-color: #ddd;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-    .btn {
-      padding: 10px 20px;
-      background-color: #ff6f61;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .btn:hover {
-      background-color: #ff3b2e;
-      transform: translateY(-2px);
-    }
-    .participant-list {
-      margin-top: 20px;
-      list-style-type: none;
-      padding: 0;
-    }
-    .participant-item {
-      background-color: rgba(255, 255, 255, 0.2);
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-    .participant-item:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-    .success-message {
-      display: none;
-      padding: 10px 20px;
-      background-color: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
-      color: white;
-      border-radius: 5px;
-      animation: fadeInOut 5s forwards;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1000;
-      text-align: center;
-      font-size: 1.2em;
-      backdrop-filter: blur(10px);
-    }
-    @keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-    .total-count {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: rgb(5, 0, 0);
-      color: #fff;
-      font-size: 0.9rem;
-    }
-    .footer-left,
-    .footer-center,
-    .footer-right {
-      flex: 1;
-      text-align: center;
-    }
-    .footer-left {
-      text-align: left;
-    }
-    .footer-right {
-      text-align: center;
-    }
-    .footer-right a {
-      color: #fff; /* Chỉnh màu chữ thành màu trắng */
-      text-decoration: none;
-      margin: 0 5px;
-    }
-    .footer-right a:hover {
-      text-decoration: underline;
-    }
-    @keyframes footerSlide {
-      from {
-        transform: translateY(100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
-  </style>    
-  <body>
-    <header>
-      <h1>Đăng Kí Tham Gia Sự Kiện</h1>
-    </header>
-    <main>
-      <section class="form-section">
-        <h2>Thêm người tham gia</h2>
-        <form id="participantForm">
-          <div class="form-group">
-            <label for="name">Họ và tên</label>
-            <input type="text" id="name" placeholder="Nhập họ tên" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Nhập email" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Số điện thoại</label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="Nhập số điện thoại"
-              required
-            />
-          </div>
-          <button type="submit" class="btn">Thêm</button>
+    <!-- Hiển thị thông báo -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-          <div id="successMessage" class="success-message">Lưu thành công!</div>
-          
-      </section>
+    <!-- Form đăng ký -->
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Đăng ký</h2>
+        <label for="hoten">Họ và tên:</label>
+        <input type="text" name="hoten" id="hoten" required>
 
-      <section class="list-section">
-        <h2>Danh sách tham gia</h2>
-        <ul id="participantList" class="participant-list"></ul>
-        <div class="total-count" id="totalCount">Tổng số người tham gia: 0</div>
-      </section>
-    </main>
-    <footer>
-      <div class="footer-left">
-        <p>Địa chỉ: 123 Đường Nguyễn Hữu Cảnh, Quận 1, TP.HCM</p>
-        <p>Điện thoại: 0123-456-789</p>
-        <p>Email: contact@eventmanagement.com</p>
-    </div>
-    <div class="footer-info">
-        <p>&copy; 2025 Event Management. All rights reserved.</p>
-    </div>
-    <div class="footer-right">
-        <p>Follow us on:</p>
-        <p>Facebook | Twitter | Instagram</p>
-    </div>
-    </footer>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
 
-    <script>
-      document
-        .getElementById("participantForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const phone = document.getElementById("phone").value;
+        <label for="sodienthoai">Số điện thoại:</label>
+        <input type="text" name="sodienthoai" id="sodienthoai" required>
 
-          const listItem = document.createElement("li");
-          listItem.className = "participant-item";
-          listItem.textContent = `${name} - ${email} - ${phone}`;
+        <button type="submit">Đăng ký</button>
+    </form>
 
-          document.getElementById("participantList").appendChild(listItem);
-          const totalCount = document.getElementById("totalCount");
-          const participantList = document.getElementById("participantList").children.length;
-          totalCount.textContent = `Tổng số người tham gia: ${participantList}`;
+    <!-- Danh sách người đã đăng ký -->
+    <h2>Danh sách đăng ký</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Họ và Tên</th>
+                <th>Email</th>
+                <th>Số Điện Thoại</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.hoten }}</td>
+                    <td>{{ participant.email }}</td>
+                    <td>{{ participant.sodienthoai }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-          document.getElementById("participantForm").reset();
-          const successMessage = document.getElementById("successMessage");
-          successMessage.style.display = "block"; 
-          setTimeout(function () {
-            successMessage.style.display = "none"; 
-          }, 2000); 
-        });
-    </script>
-  </body>
+</body>
 </html>

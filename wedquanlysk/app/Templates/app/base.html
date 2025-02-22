@@ -19,11 +19,11 @@
        <!-- Navbar -->
        <nav class="nav-menu">
         <ul>
-          <li><a href="#trangchu">Trang chủ</a></li>
-          <li><a href="#sukien">Sự kiện</a></li>
+          <li><a href="{% url "home" %}">Trang chủ</a></li>
+          <li><a href="{% url "event" %}">Sự kiện</a></li>
           <li><a href="#hotro">Hỗ trợ</a></li>
           <li><a href="#ve">Vé</a></li>
-          <li><a href="dangky" style="color: #f00;">Đăng ký</a></li>
+          <li><a href="{% url 'index' %}" style="color: #f00;">Đăng ký</a></li>
         </ul>
        </nav>
       <a href="#" class="search-icon">
@@ -43,7 +43,7 @@
                 <span id="year">YEAR</span>
             </div>
             <div class="event-update">Cập nhật: <span id="update-date">Loading...</span></div>
-            <button class="view-more">VIEW MORE</button>
+            <button class="view-more"><a href="{% url "event" %}">VIEW MORE</a></button>
         </div>
     
         <script>
